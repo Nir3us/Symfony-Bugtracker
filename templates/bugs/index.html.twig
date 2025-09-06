@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BugsController!{% endblock %}
+
+{% block body %}
+    <h1>Latest Bugs</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Bug ID</th>
+                <th>Description</th>
+                <th>Reporter</th>
+                <th>Project</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bug in bugs %}
+                <tr>
+
+                    <td>
+                        <a href="{{ path('show_bug', {'id': bug.id}) }}">{{ bug.id }}</a>
+                    </td>
+                    <td>{{ bug.description }}</td>
+                    <td>{{ bug.reporter.name }}</td>
+                    <td>{{ bug.project.name }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>No bugs found!</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<div class="pagination">
+    {{ knp_pagination_render(bugs) }}
+</div>
+
+{% if app.user %}
+    <a href="{{ path('new_bug') }}">New Bug</a>
+{% endif %}
+
+<a href="{{ path('app_home') }}">Come back to main page</a>
+
+{% endblock %}

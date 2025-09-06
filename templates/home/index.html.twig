@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+        <p class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </p>
+    {% else %}
+        <p>
+            <a href="{{ path('app_login') }}">Login</a>
+        </p>
+
+    {% endif %}
+
+<div class="example-wrapper">
+    <h1>Welcome to my Mine!</h1>
+    <h3><a href="{{ path('latest_bugs') }}">See latest BUGS!</a></h3>
+    <h3><a href="{{ path('app_user_index') }}">See users!</a></h3>
+    <h3><a href="{{ path('app_project_index') }}">See project!</a></h3>
+    {% if app.user %}
+        <h3><a href="{{ path('admin_profile') }}">Change Admin Email</a></h3>
+        <h3><a href="{{ path('admin_change_password') }}">Change Admin Password</a></h3>
+    {% endif %}
+</div>
+{% endblock %}

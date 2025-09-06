@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+
+<h1>Bug {{ bug.title }}</h1>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ bug.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ bug.title }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ bug.description }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ bug.status }}</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ bug.createdAt|date('Y-m-d H:i')|default('-') }}</td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td>{{ bug.updatedAt|date('Y-m-d H:i')|default('-') }}</td>
+        </tr>
+        <tr>
+            <th>From what project</th>
+            <td>{{ bug.project.name }}</td>
+        </tr>
+        <tr>
+            <th>Reporter</th>
+            <td>{{ bug.reporter.name }}</td>
+        </tr>
+    </tbody>
+</table>
+
+    <a href="{{ path('latest_bugs') }}">back to list</a>
+
+{% if app.user %}
+    <a href="{{ path('edit_bug',{'id': bug.id}) }}">Edit Bug</a>
+
+    <a href="{{ path('delete_bug', {'id': bug.id}) }}">Delete Bug</a>
+{% endif %}
+
+{% endblock %}
