@@ -34,7 +34,7 @@ class User
     /**
      * @var Collection<int, Bug>
      */
-    #[ORM\OneToMany(targetEntity: Bug::class, mappedBy: 'reporter', fetch: 'EXTRA_LAZY')]
+    #[ORM\OneToMany(targetEntity: Bug::class, cascade: ['remove'], orphanRemoval: true, mappedBy: 'reporter', fetch: 'EXTRA_LAZY')]
     private Collection $report;
 
     public function __construct()
