@@ -34,7 +34,7 @@ class User
     /**
      * @var Collection<int, Bug>
      */
-    #[ORM\OneToMany(targetEntity: Bug::class, mappedBy: 'reporter')]
+    #[ORM\OneToMany(targetEntity: Bug::class, mappedBy: 'reporter', fetch: 'EXTRA_LAZY')]
     private Collection $report;
 
     public function __construct()
@@ -46,7 +46,6 @@ class User
     {
         return $this->id;
     }
-
 
     public function getEmail(): ?string
     {

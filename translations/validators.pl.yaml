@@ -1,0 +1,8 @@
+# translations/validators.pl.yaml
+Please enter your email: "Podaj swój adres e-mail"
+Please enter a valid email address: "Podaj poprawny adres e-mail"
+You should agree to our terms.: "Musisz zaakceptować regulamin."
+Please enter a password: "Podaj hasło"
+Your password should be at least {{ limit }} characters: "Twoje hasło musi mieć co najmniej {{ limit }} znaków"
+Your password must be at least {{ limit }} characters long: "Twoje hasło powinno mieć co najmniej {{ limit }} znaków długości"
+There is already an account with this email: "Konto z tym adresem e-mail już istnieje"

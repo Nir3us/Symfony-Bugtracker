@@ -25,7 +25,9 @@ class Project
     /**
      * @var Collection<int, Bug>
      */
-    #[ORM\OneToMany(targetEntity: Bug::class, mappedBy: 'project')]
+
+    // żeby przy usuwaniu projektu usuwały się też powiazane bugi
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: Bug::class, cascade: ['remove'], orphanRemoval: true, fetch: 'EXTRA_LAZY')]
     private Collection $bugs;
 
     public function __construct()
