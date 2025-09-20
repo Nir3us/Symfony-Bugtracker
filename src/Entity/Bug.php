@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Symfony Bugtracker project.
+ *
+ * Entity representing a Bug in the system. Bug is main entity in this project.
+ *
+ * (c)Norbert Białek <mlodszy.bialek@gmail.com>
+ */
+
 namespace App\Entity;
 
 use App\Repository\BugRepository;

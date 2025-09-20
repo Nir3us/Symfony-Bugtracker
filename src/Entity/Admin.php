@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Symfony Bugtracker project.
+ *
+ * Entity representing a Admin in the system. Admin is entity that can login and register into database.
+ * Set credentials are: login: admin@test.pl password: qwerty
+ *
+ * (c)Norbert Białek <mlodszy.bialek@gmail.com>
+ */
+
 namespace App\Entity;
 
 use App\Repository\AdminRepository;

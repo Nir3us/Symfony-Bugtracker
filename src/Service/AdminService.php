@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Symfony Bugtracker project.
+ *
+ * Service class for handling Admin-related business logic.
+ *
+ * (c)Norbert Białek <mlodszy.bialek@gmail.com>
+ */
+
 namespace App\Service;
 
 use App\Entity\Admin;

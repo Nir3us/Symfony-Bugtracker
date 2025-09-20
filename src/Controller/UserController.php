@@ -1,10 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Symfony Bugtracker project.
+ *
+ * Controller handling requests for User management.
+ *
+ * (c)Norbert Białek <mlodszy.bialek@gmail.com>
+ * Licensed under MIT License.
+ */
+
 namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Repository\UserRepository;
 use App\Service\UserService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,11 +24,9 @@ use Symfony\Component\Routing\Attribute\Route;
 final class UserController extends AbstractController
 {
     #[Route(name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(UserService $userService, PaginatorInterface $paginator, Request $request): Response
     {
-        $query = $userRepository->createQueryBuilder('u')
-            ->orderBy('u.id', 'DESC')
-            ->getQuery();
+        $query = $userService->getUserListQuery('u');
 
         $pagination = $paginator->paginate(
             $query,
@@ -83,7 +89,7 @@ final class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserService $userService): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
             $userService->delete($user);
             $this->addFlash('success', 'User deleted successfully.');
         }

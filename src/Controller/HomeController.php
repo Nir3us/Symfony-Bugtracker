@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Symfony Bugtracker project.
+ *
+ * Controller handling requests for Home management.
+ *
+ * (c)Norbert Białek <mlodszy.bialek@gmail.com>
+ * Licensed under MIT License.
+ */
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

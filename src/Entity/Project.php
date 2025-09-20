@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Symfony Bugtracker project.
+ *
+ * Entity representing a Project in the system.
+ *
+ * (c)Norbert Białek <mlodszy.bialek@gmail.com>
+ */
+
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
@@ -27,7 +35,13 @@ class Project
      */
 
     // żeby przy usuwaniu projektu usuwały się też powiazane bugi
-    #[ORM\OneToMany(mappedBy: 'project', targetEntity: Bug::class, cascade: ['remove'], orphanRemoval: true, fetch: 'EXTRA_LAZY')]
+    #[ORM\OneToMany(
+        mappedBy: 'project',
+        targetEntity: Bug::class,
+        cascade: ['remove'],
+        orphanRemoval: true,
+        fetch: 'EXTRA_LAZY'
+    )]
     private Collection $bugs;
 
     public function __construct()

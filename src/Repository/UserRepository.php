@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Symfony Bugtracker project.
+ *
+ * Doctrine repository for the User entity.
+ *
+ * (c)Norbert Białek <mlodszy.bialek@gmail.com>
+ */
+
 namespace App\Repository;
 
 use App\Entity\User;

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Symfony Bugtracker project.
+ *
+ * Class for loading test/demo data into the database.
+ *
+ * (c)Norbert Białek <mlodszy.bialek@gmail.com>
+ */
+
 namespace App\DataFixtures;
 
 use App\Entity\Admin;
