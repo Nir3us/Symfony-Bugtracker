@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ 'log_in'|trans }}{% endblock %}
 
 {% block body %}
     <form method="post">
@@ -8,20 +8,20 @@
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% else %}
             <p>
-                <a href="{{ path('app_register') }}">Register new admin here!</a>
+                <a href="{{ path('app_register') }}">{{ 'register_new_admin_here'|trans }}</a>
             </p>
         {% endif %}
 
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                {{ 'you_are_logged_in_as'|trans }} {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">{{ 'logout'|trans }}</a>
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="username">Email</label>
+        <h1 class="h3 mb-3 font-weight-normal">{{ 'please_sign_in'|trans }}</h1>
+        <label for="username">{{ 'email'|trans }}</label>
         <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Password</label>
+        <label for="password">{{ 'password'|trans }}</label>
         <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
         <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
@@ -36,7 +36,7 @@
         #}
 
         <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
+            {{ 'sign_in'|trans }}
         </button>
     </form>
 {% endblock %}

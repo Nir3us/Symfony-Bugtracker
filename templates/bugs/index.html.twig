@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BugsController!{% endblock %}
+{% block title %}{{ 'hello_bugscontroller'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Latest Bugs</h1>
+    <h1>{{ 'latest_bugs'|trans }}</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Bug ID</th>
-                <th>Description</th>
-                <th>Reporter</th>
-                <th>Project</th>
+                <th>{{ 'bug_id'|trans }}</th>
+                <th>{{ 'description'|trans }}</th>
+                <th>{{ 'reporter'|trans }}</th>
+                <th>{{ 'project'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td>No bugs found!</td>
+                    <td>{{ 'no_bugs_found'|trans }}</td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -38,9 +38,9 @@
 </div>
 
 {% if app.user %}
-    <a href="{{ path('new_bug') }}">New Bug</a>
+    <a href="{{ path('new_bug') }}">{{ 'new_bug'|trans }}</a>
 {% endif %}
 
-<a href="{{ path('app_home') }}">Come back to main page</a>
+<a href="{{ path('app_home') }}">{{ 'back_to_main_page'|trans }}</a>
 
 {% endblock %}

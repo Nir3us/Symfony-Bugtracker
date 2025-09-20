@@ -2,14 +2,14 @@
 
 {% block body %}
 
-<h1>Delete Bug</h1>
+<h1>{{ 'title_delete_bug'|trans }}</h1>
 
-<p>Are you sure?</p>
+<p>{{ 'are_you_sure'|trans }}</p>
 
 <form method="post">
-    <button>Yes!</button>
+    <button>{{'positive'|trans}}</button>
 
-    <a href="{{ path('show_bug', {'id': id}) }}">No!</a>
+    <a href="{{ path('show_bug', {'id': id}) }}">{{'negative'|trans}}</a>
 </form>
 
 {% endblock %}

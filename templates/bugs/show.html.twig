@@ -2,51 +2,51 @@
 
 {%  block body %}
 
-<h1>Bug {{ bug.title }}</h1>
+<h1>{{ 'bug'|trans }} {{ bug.title }}</h1>
 
 <table>
     <tbody>
         <tr>
-            <th>Id</th>
+            <th>{{ 'id'|trans }}</th>
             <td>{{ bug.id }}</td>
         </tr>
         <tr>
-            <th>Title</th>
+            <th>{{ 'title'|trans }}</th>
             <td>{{ bug.title }}</td>
         </tr>
         <tr>
-            <th>Description</th>
+            <th>{{ 'description'|trans }}</th>
             <td>{{ bug.description }}</td>
         </tr>
         <tr>
-            <th>Status</th>
+            <th>{{ 'status'|trans }}</th>
             <td>{{ bug.status }}</td>
         </tr>
         <tr>
-            <th>Created</th>
+            <th>{{ 'created'|trans }}</th>
             <td>{{ bug.createdAt|date('Y-m-d H:i')|default('-') }}</td>
         </tr>
         <tr>
-            <th>Updated</th>
+            <th>{{ 'updated'|trans }}</th>
             <td>{{ bug.updatedAt|date('Y-m-d H:i')|default('-') }}</td>
         </tr>
         <tr>
-            <th>From what project</th>
+            <th>{{ 'from_what_project'|trans }}</th>
             <td>{{ bug.project.name }}</td>
         </tr>
         <tr>
-            <th>Reporter</th>
+            <th>{{ 'reporter'|trans }}</th>
             <td>{{ bug.reporter.name }}</td>
         </tr>
     </tbody>
 </table>
 
-    <a href="{{ path('latest_bugs') }}">back to list</a>
+    <a href="{{ path('latest_bugs') }}">{{ 'back_to_list'|trans }}</a>
 
 {% if app.user %}
-    <a href="{{ path('edit_bug',{'id': bug.id}) }}">Edit Bug</a>
+    <a href="{{ path('edit_bug',{'id': bug.id}) }}">{{ 'edit_bug'|trans }}</a>
 
-    <a href="{{ path('delete_bug', {'id': bug.id}) }}">Delete Bug</a>
+    <a href="{{ path('delete_bug', {'id': bug.id}) }}">{{ 'delete_bug'|trans }}</a>
 {% endif %}
 
 {% endblock %}

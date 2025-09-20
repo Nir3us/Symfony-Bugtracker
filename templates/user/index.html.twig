@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}{{ 'user_index'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1>{{ 'user_index'|trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Roles</th>
-                <th>Name</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
+                <th>{{ 'id'|trans }}</th>
+                <th>{{ 'email'|trans }}</th>
+                <th>{{ 'password'|trans }}</th>
+                <th>{{ 'roles'|trans }}</th>
+                <th>{{ 'name'|trans }}</th>
+                <th>{{ 'created_at'|trans }}</th>
+                <th>{{ 'actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -28,23 +28,23 @@
                 <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     {% if app.user %}
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">{{ 'show'|trans }}</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">{{ 'edit'|trans }}</a>
                     {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">{{ 'no_records_found'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
 {% if app.user %}
-    <a href="{{ path('app_user_new') }}">Create new</a>
+    <a href="{{ path('app_user_new') }}">{{ 'create_new'|trans }}</a>
 {% endif %}
 
-    <a href="{{ path('app_home') }}">Come back to main page</a>
+    <a href="{{ path('app_home') }}">{{ 'back_to_main_page'|trans }}</a>
 
 {% endblock %}

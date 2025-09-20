@@ -2,12 +2,12 @@
 
 {% block body %}
     {% if app.user %}
-        <h1>Edit Profile</h1>
+        <h1>{{ 'edit_profile'|trans }}</h1>
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
     {% endif %}
 
-    <a href="{{ path('app_home') }}">Come back to main page</a>
+    <a href="{{ path('app_home') }}">{{ 'back_to_main_page'|trans }}</a>
 {% endblock %}
 
