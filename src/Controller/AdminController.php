@@ -19,12 +19,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/admin')]
 class AdminController extends AbstractController
 {
     #[Route('/profile', name: 'admin_profile')]
-    public function editProfile(Request $request, AdminService $adminService): Response
+    public function editProfile(Request $request, AdminService $adminService, TranslatorInterface $translator): Response
     {
         /** @var Admin $admin */
         $admin = $this->getUser();
@@ -35,7 +36,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $adminService->updateProfile($admin);
 
-            $this->addFlash('success', 'flash.profile_updated');
+            $this->addFlash('success', $translator->trans('flash.profile_updated'));
 
             return $this->redirectToRoute('admin_profile');
         }
@@ -46,7 +47,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/change-password', name: 'admin_change_password')]
-    public function changePassword(Request $request, AdminService $adminService): Response
+    public function changePassword(Request $request, AdminService $adminService, TranslatorInterface $translator): Response
     {
         /** @var Admin $admin */
         $admin = $this->getUser();
@@ -58,7 +59,7 @@ class AdminController extends AbstractController
             $plainPassword = $form->get('plainPassword')->getData();
             $adminService->changePassword($admin, $plainPassword);
 
-            $this->addFlash('success', 'flash.password_updated');
+            $this->addFlash('success', $translator->trans('flash.password_updated'));
 
             return $this->redirectToRoute('admin_profile');
         }

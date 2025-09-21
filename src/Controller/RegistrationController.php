@@ -18,11 +18,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, RegistrationService $registrationService): Response
+    public function register(Request $request, RegistrationService $registrationService, TranslatorInterface $translator): Response
     {
         $user = new Admin();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -35,7 +36,7 @@ final class RegistrationController extends AbstractController
             // delegacja logiki do serwisu
             $registrationService->register($user, $plainPassword);
 
-            $this->addFlash('success', 'flash.register_success');
+            $this->addFlash('success', $translator->trans('flash.register_success'));
 
             return $this->redirectToRoute('app_home');
         }

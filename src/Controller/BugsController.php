@@ -18,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class BugsController extends AbstractController
 {
@@ -41,7 +42,7 @@ final class BugsController extends AbstractController
     }
 
     #[Route('/bugs/new', name: 'new_bug')]
-    public function new(Request $request, BugService $bugService): Response
+    public function new(Request $request, BugService $bugService, TranslatorInterface $translator): Response
     {
         $bug = new Bug();
         $form = $this->createForm(BugType::class, $bug);
@@ -51,7 +52,7 @@ final class BugsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $bugService->create($bug);
 
-            $this->addFlash('notice_bug', 'flash.new_bug_created');
+            $this->addFlash('notice_bug', $translator->trans('flash.new_bug_created'));
 
             return $this->redirectToRoute('show_bug', ['id' => $bug->getId()]);
         }
@@ -62,7 +63,7 @@ final class BugsController extends AbstractController
     }
 
     #[Route('/bug/{id<\d+>}/edit', name: 'edit_bug')]
-    public function edit(Bug $bug, Request $request, BugService $bugService): Response
+    public function edit(Bug $bug, Request $request, BugService $bugService, TranslatorInterface $translator): Response
     {
         $form = $this->createForm(BugType::class, $bug);
         $form->handleRequest($request);
@@ -70,7 +71,7 @@ final class BugsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $bugService->update();
 
-            $this->addFlash('notice_bug', 'flash.update_bug');
+            $this->addFlash('notice_bug', $translator->trans('flash.update_bug'));
 
             return $this->redirectToRoute('show_bug', ['id' => $bug->getId()]);
         }
@@ -81,12 +82,12 @@ final class BugsController extends AbstractController
     }
 
     #[Route('/bug/{id<\d+>}/delete', name: 'delete_bug')]
-    public function delete(Bug $bug, Request $request, BugService $bugService): Response
+    public function delete(Bug $bug, Request $request, BugService $bugService, TranslatorInterface $translator): Response
     {
         if ($request->isMethod('POST')) {
             $bugService->delete($bug);
 
-            $this->addFlash('notice_bug', 'flash.delete_bug');
+            $this->addFlash('notice_bug', $translator->trans('flash.delete_bug'));
 
             return $this->redirectToRoute('latest_bugs');
         }
