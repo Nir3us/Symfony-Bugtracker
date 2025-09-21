@@ -25,21 +25,21 @@ class ChangePasswordType extends AbstractType
     {
         $builder
             ->add('plainPassword', PasswordType::class, [
-                'label' => 'New password',
+                'label' => 'form.new_password',
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'form.not_blank',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password must be at least {{ limit }} characters long',
+                        'minMessage' => 'form.password_too_short',
                         'max' => 4096,
                     ]),
                 ],
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Change password',
+                'label' => 'form.update_data',
             ]);
     }
 

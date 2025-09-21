@@ -21,14 +21,14 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', null, [
+            ->add('form.name_project', null, [
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Project name is required.',
+                        'message' => 'form.not_blank',
                     ]),
                 ],
             ])
-            ->add('description');
+            ->add('form.description');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

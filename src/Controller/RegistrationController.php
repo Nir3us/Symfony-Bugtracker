@@ -35,7 +35,7 @@ final class RegistrationController extends AbstractController
             // delegacja logiki do serwisu
             $registrationService->register($user, $plainPassword);
 
-            $this->addFlash('success', 'Account created successfully!');
+            $this->addFlash('success', 'flash.register_success');
 
             return $this->redirectToRoute('app_home');
         }

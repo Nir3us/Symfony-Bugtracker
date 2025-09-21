@@ -48,7 +48,7 @@ final class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userService->create($user);
-            $this->addFlash('success', 'User created successfully.');
+            $this->addFlash('success', 'flash.register_user_success');
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -75,7 +75,7 @@ final class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userService->update();
-            $this->addFlash('success', 'User updated successfully.');
+            $this->addFlash('success', 'flash.edit_user_success');
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -91,7 +91,7 @@ final class UserController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->getPayload()->getString('_token'))) {
             $userService->delete($user);
-            $this->addFlash('success', 'User deleted successfully.');
+            $this->addFlash('success', 'flash.delete_user_success');
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);

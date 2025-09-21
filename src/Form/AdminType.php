@@ -23,7 +23,7 @@ class AdminType extends AbstractType
         $builder
             ->add('email')
             ->add('save', SubmitType::class, [
-                'label' => 'Update data',
+                'label' => 'form.update_data',
             ]);
     }
 

@@ -24,20 +24,22 @@ class BugType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('description')
-            ->add('status')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('form.title')
+            ->add('form.description')
+            ->add('form.status')
+            ->add('form.createdAt')
+            ->add('form.updatedAt')
             ->add('project', EntityType::class, [
                 'class' => Project::class,
                 'choice_label' => 'name',
+                'label' => 'form.name_project',
             ])
             ->add('reporter', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'name',
+                'label' => 'form.name_user',
             ])
-            ->add('save', SubmitType::class, ['label' => 'Save'])
+            ->add('form.save', SubmitType::class, ['label' => 'form.update_data'])
         ;
     }
 

@@ -35,7 +35,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $adminService->updateProfile($admin);
 
-            $this->addFlash('success', 'Profile updated!');
+            $this->addFlash('success', 'flash.profile_updated');
 
             return $this->redirectToRoute('admin_profile');
         }
@@ -58,7 +58,7 @@ class AdminController extends AbstractController
             $plainPassword = $form->get('plainPassword')->getData();
             $adminService->changePassword($admin, $plainPassword);
 
-            $this->addFlash('success', 'Password updated!');
+            $this->addFlash('success', 'flash.password_updated');
 
             return $this->redirectToRoute('admin_profile');
         }

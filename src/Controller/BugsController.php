@@ -51,7 +51,7 @@ final class BugsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $bugService->create($bug);
 
-            $this->addFlash('notice_bug', 'Bug successfully created!');
+            $this->addFlash('notice_bug', 'flash.new_bug_created');
 
             return $this->redirectToRoute('show_bug', ['id' => $bug->getId()]);
         }
@@ -70,7 +70,7 @@ final class BugsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $bugService->update();
 
-            $this->addFlash('notice_bug', 'Bug successfully updated!');
+            $this->addFlash('notice_bug', 'flash.update_bug');
 
             return $this->redirectToRoute('show_bug', ['id' => $bug->getId()]);
         }
@@ -86,7 +86,7 @@ final class BugsController extends AbstractController
         if ($request->isMethod('POST')) {
             $bugService->delete($bug);
 
-            $this->addFlash('notice_bug', 'Bug successfully deleted!');
+            $this->addFlash('notice_bug', 'flash.delete_bug');
 
             return $this->redirectToRoute('latest_bugs');
         }
