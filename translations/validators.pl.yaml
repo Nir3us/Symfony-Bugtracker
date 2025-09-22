@@ -7,3 +7,7 @@ Your password should be at least {{ limit }} characters: "Twoje hasło musi mie�
 Your password must be at least {{ limit }} characters long: "Twoje hasło powinno mieć co najmniej {{ limit }} znaków długości"
 There is already an account with this email: "Konto z tym adresem e-mail już istnieje"
 Project name is required: "Nazwa projektu jest wymagana"
+form.not_blank: "To pole nie może być puste"
+form.valid_email: "Proszę podać poprawny adres email"
+form.agree_terms: "Musisz zaakceptować regulamin"
+form.password_too_short: "Hasło jest za krótkie"

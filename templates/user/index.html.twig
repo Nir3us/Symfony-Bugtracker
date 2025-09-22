@@ -30,6 +30,7 @@
                     {% if app.user %}
                     <a href="{{ path('app_user_show', {'id': user.id}) }}">{{ 'show'|trans }}</a>
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}">{{ 'edit'|trans }}</a>
+                        <a href="{{ path('app_user_password', {'id': user.id}) }}">{{ 'change_password_user'|trans }}</a>
                     {% endif %}
                 </td>
             </tr>

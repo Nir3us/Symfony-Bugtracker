@@ -14,10 +14,11 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User
+class User implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,7 +28,7 @@ class User
     #[ORM\Column(length: 60, nullable: true)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 12)]
+    #[ORM\Column(length: 255)]
     private ?string $password = null;
 
     #[ORM\Column(nullable: true)]
@@ -36,8 +37,8 @@ class User
     #[ORM\Column(length: 25, nullable: true)]
     private ?string $name = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?\DateTime $createdAt = null;
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * @var Collection<int, Bug>
@@ -109,12 +110,12 @@ class User
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTime $createdAt): static
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
 

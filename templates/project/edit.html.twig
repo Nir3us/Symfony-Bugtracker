@@ -5,7 +5,7 @@
 {% block body %}
     <h1>{{ 'edit_project'|trans }}</h1>
 
-    {{ include('project/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('project/_form.html.twig', {'button_label': 'update'|trans}) }}
 
     <a href="{{ path('app_project_index') }}">{{ 'back_to_list'|trans }}</a>
 

@@ -69,7 +69,7 @@ final class BugsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $bugService->update();
+            $bugService->update($bug);
 
             $this->addFlash('notice_bug', $translator->trans('flash.update_bug'));
 
@@ -82,8 +82,12 @@ final class BugsController extends AbstractController
     }
 
     #[Route('/bug/{id<\d+>}/delete', name: 'delete_bug')]
-    public function delete(Bug $bug, Request $request, BugService $bugService, TranslatorInterface $translator): Response
-    {
+    public function delete(
+        Bug $bug,
+        Request $request,
+        BugService $bugService,
+        TranslatorInterface $translator
+    ): Response {
         if ($request->isMethod('POST')) {
             $bugService->delete($bug);
 

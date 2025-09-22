@@ -63,6 +63,8 @@ created_at: "Created At"
 roles: "Roles"
 new_user: "Create New User!"
 user: "Users"
+update_data: "Save data"
+change_password_user: "Change user password"
 flash:
   profile_updated: "Profile updated!"
   password_updated: "Password updated!"
@@ -73,6 +75,7 @@ flash:
   register_user_success: "User created successfully."
   edit_user_success: "User updated successfully."
   delete_user_success: "User deleted successfully."
+  change_password_success: "Password changed successfully"
 form:
   update_data: "Save data!"
   name_user: "User name"
@@ -92,5 +95,6 @@ form:
   roles: "Roles"
   password: "Password"
   terms: "Agree Terms"
+  placeholder: "Select status"
 
 

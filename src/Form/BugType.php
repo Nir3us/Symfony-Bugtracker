@@ -15,9 +15,11 @@ use App\Entity\Project;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class BugType extends AbstractType
 {
@@ -26,18 +28,23 @@ class BugType extends AbstractType
         $builder
             ->add('title', null, [
                 'label' => 'form.title',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'form.not_blank',
+                    ]),
+                ],
             ])
-            ->add('description',null, [
+            ->add('description', null, [
                 'label' => 'form.description',
             ])
-            ->add('status',null, [
+            ->add('status', ChoiceType::class, [
                 'label' => 'form.status',
-            ])
-            ->add('createdAt',null, [
-                'label' => 'form.createdAt',
-            ])
-            ->add('updatedAt',null, [
-                'label' => 'form.updatedAt',
+                'choices' => [
+                    'Open' => 'Open',
+                    'Closed' => 'Closed',
+                ],
+                'placeholder' => 'form.placeholder',
+                'required' => true,
             ])
             ->add('project', EntityType::class, [
                 'class' => Project::class,

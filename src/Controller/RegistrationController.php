@@ -23,8 +23,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, RegistrationService $registrationService, TranslatorInterface $translator): Response
-    {
+    public function register(
+        Request $request,
+        RegistrationService $registrationService,
+        TranslatorInterface $translator
+    ): Response {
         $user = new Admin();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);

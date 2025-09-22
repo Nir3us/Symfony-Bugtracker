@@ -47,8 +47,11 @@ class AdminController extends AbstractController
     }
 
     #[Route('/change-password', name: 'admin_change_password')]
-    public function changePassword(Request $request, AdminService $adminService, TranslatorInterface $translator): Response
-    {
+    public function changePassword(
+        Request $request,
+        AdminService $adminService,
+        TranslatorInterface $translator
+    ): Response {
         /** @var Admin $admin */
         $admin = $this->getUser();
 

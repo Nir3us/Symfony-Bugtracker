@@ -63,6 +63,8 @@ created_at: "Stworzono o"
 roles: "Stanowisko"
 new_user: "Stwórz Nowego Użytkownika!"
 user: "Użytkownicy"
+update_data: "Zapisz dane"
+change_password_user: "Zmień hasło użytkownika"
 flash:
   profile_updated: "Profil został zaktualizowany!"
   password_updated: "Hasło zostało zmienione!"
@@ -73,6 +75,7 @@ flash:
   register_user_success: "Użytkownik został dodany."
   edit_user_success: "Użytkownik został zmieniony."
   delete_user_success: "Użytkownik został usunięty."
+  change_password_success: "Hasło zostało zmienione pomyślnie"
 form:
   update_data: "Zapisz dane!"
   name_user: "Imie użytkownika"
@@ -92,4 +95,5 @@ form:
   roles: "Stanowisko"
   password: "Hasło"
   terms: "Zgadzam się na warunki korzystania ze strony"
+  placeholder: "Wybierz status"
 
