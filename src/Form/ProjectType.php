@@ -23,6 +23,7 @@ class ProjectType extends AbstractType
         $builder
             ->add('name', null, [
                 'label' => 'form.name_project',
+                'required' => true,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'form.not_blank',

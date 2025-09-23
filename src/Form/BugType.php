@@ -28,6 +28,7 @@ class BugType extends AbstractType
         $builder
             ->add('title', null, [
                 'label' => 'form.title',
+                'required' => true,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'form.not_blank',

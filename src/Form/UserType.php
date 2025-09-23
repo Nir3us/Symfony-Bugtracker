@@ -15,6 +15,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class UserType extends AbstractType
 {
@@ -23,6 +24,12 @@ class UserType extends AbstractType
         $builder
             ->add('email', null, [
                 'label' => 'form.email',
+                'required' => true,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'form.not_blank',
+                    ]),
+                ],
             ])
             ->add('roles', null, [
                 'label' => 'form.roles',

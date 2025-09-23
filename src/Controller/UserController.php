@@ -117,7 +117,7 @@ final class UserController extends AbstractController
         User $user,
         UserService $userService,
         UserPasswordHasherInterface $passwordHasher,
-        TranslatorInterface $translator,
+        TranslatorInterface $translator
     ): Response {
         $form = $this->createForm(UserPasswordType::class);
         $form->handleRequest($request);
